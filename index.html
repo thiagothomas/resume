@@ -3,69 +3,279 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Thiago Thomas — Resume</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Thiago Thomas — Résumé</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
+        /* ---------- Global ---------- */
+        :root {
+            --accent: #0d1117;
+            /* GitHub dark */
+            --text: #24292f;
+            /* GitHub gray */
+            --muted: #586069;
+            --bg: #ffffff;
+            --link: #0d1117;
+        }
+
+        /* Dark-mode overrides */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --accent: #58a6ff;
+                --text: #c9d1d9;
+                --muted: #8b949e;
+                --bg: #0d1117;
+                --link: #58a6ff;
+            }
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
         html,
         body {
-            height: 100%;
             margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
         }
 
-        body {
-            display: flex;
-            flex-direction: column;
-            font-family: system-ui, sans-serif;
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 .3em;
+            line-height: 1.2;
         }
 
-        header {
-            padding: 1rem;
-            text-align: center;
+        h2 {
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: .2em;
+            margin-top: 1.5rem;
         }
 
-        iframe {
-            flex: 1;
-            border: none;
+        section {
+            margin-top: 1rem;
         }
 
-        footer {
-            padding: .5rem;
-            text-align: center;
-            font-size: .8rem;
-            opacity: .6;
+        ul {
+            margin: .4rem 0 .8rem 1.2rem;
+            padding: 0;
         }
 
-        a.button {
-            display: inline-block;
-            margin: .5rem 0;
-            padding: .6rem 1.2rem;
-            border-radius: 8px;
+        li {
+            margin: .25rem 0;
+            line-height: 1.4;
+        }
+
+        a {
+            color: var(--link);
             text-decoration: none;
-            background: #24292f;
-            color: #fff;
         }
 
-        a.button:hover {
-            background: #000;
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- Layout ---------- */
+        .wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .4rem;
+        }
+
+        .role {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-bottom: 1.2rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: .8rem;
+            padding: .6rem 1.2rem;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: transform .15s;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ---------- Two-column entries ---------- */
+        .entry {
+            margin-bottom: .9rem;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .4rem;
+        }
+
+        .entry-header h3 {
+            font-size: 1.05rem;
+        }
+
+        .location,
+        .dates {
+            font-size: .9rem;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        /* ---------- Tech grid ---------- */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: .3rem 1.2rem;
+            list-style: none;
+            padding: 0;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>Thiago Thomas</h1>
-        <p>Software Engineer · Crypto + AI Agents Enthusiast</p>
-        <a class="button" href="resume.pdf" download>
-            ⬇️ Download PDF
-        </a>
-    </header>
+    <div class="wrapper">
+        <!-- ===== Header ===== -->
+        <header>
+            <h1>Thiago Thomas</h1>
+            <p class="role">Software Engineer · Crypto + AI Agents Enthusiast</p>
+            <div class="flex-between">
+                <div>
+                    <a href="mailto:thiagothomas@gmail.com">thiagothomas@gmail.com</a> ·
+                    <span>+55 51 98132-2112</span> ·
+                    <a href="https://www.linkedin.com/in/thiagothomas" target="_blank" rel="noreferrer">LinkedIn</a>
+                </div>
+                <a class="download-btn" href="resume.pdf" download>⬇ Download PDF</a>
+            </div>
+        </header>
 
-    <!-- In-browser preview -->
-    <iframe src="resume.pdf#zoom=page-width"></iframe>
+        <!-- ===== Education ===== -->
+        <section>
+            <h2>Education</h2>
 
-    <footer>
-        © 2025 Thiago Thomas · <a href="mailto:thiagohthomas@gmail.com">Contact</a>
-    </footer>
+            <div class="entry">
+                <div class="entry-header">
+                    <h3>Pontifícia Universidade Católica do Rio Grande do Sul</h3>
+                    <div class="location">Porto Alegre, RS</div>
+                </div>
+                <div class="flex-between">
+                    <em>Master of Science in Computer Science</em>
+                    <div class="dates">Mar 2025 – Dec 2026</div>
+                </div>
+                <ul>
+                    <li>Research: Goal Recognition &amp; Multi-Agent Reinforcement Learning</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <h3>Universidade do Vale do Rio dos Sinos</h3>
+                    <div class="location">São Leopoldo, RS</div>
+                </div>
+                <div class="flex-between">
+                    <em>B.Sc. in Computer Science — GPA 3.65 (9.12 / 10.0)</em>
+                    <div class="dates">Mar 2020 – Dec 2024</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Experience ===== -->
+        <section>
+            <h2>Experience</h2>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <h3>Blorm — Web3 Software Engineer</h3>
+                    <div class="location">Remote (US)</div>
+                </div>
+                <div class="dates">Apr 2025 – Present</div>
+                <ul>
+                    <li>Building decentralized apps &amp; intelligent agents at the AI × Crypto intersection.</li>
+                    <li>Full-stack Web3 with Next.js, React, Tailwind, Nest.js, Node.js &amp; Python.</li>
+                    <li>Leveraging GCP for scalable deployment &amp; data workflows.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <h3>SAP — Software Engineer (Full-Stack)</h3>
+                    <div class="location">Hybrid · São Leopoldo, RS</div>
+                </div>
+                <div class="dates">Nov 2021 – Apr 2025</div>
+                <ul>
+                    <li>Developed Guided Sourcing &amp; Category Management modules (Java, Spring Boot, Angular).</li>
+                    <li>Automated testing with Katalon; collaborated with global teams.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <h3>NTT DATA (Itau Unibanco) — Java Developer</h3>
+                    <div class="location">Remote</div>
+                </div>
+                <div class="dates">Jul 2021 – Nov 2021</div>
+                <ul>
+                    <li>Built Spring-Boot micro-services for Open Banking / Open Finance.</li>
+                    <li>Used AWS &amp; SQS for scalable messaging and deployment.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <h3>Meta — Junior Java Developer</h3>
+                    <div class="location">Remote</div>
+                </div>
+                <div class="dates">Oct 2020 – Jul 2021</div>
+                <ul>
+                    <li>Developed an SSO portal (Java, Spring Boot) and maintained CI/CD (Jenkins + OpenShift).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== Publications ===== -->
+        <section>
+            <h2>Publications</h2>
+            <ul>
+                <li>
+                    Thomas, T.H.; Righi, R.R.
+                    “Exploring Offloading Strategies in the Analysis of Vital Signs in Fog Computing.”
+                    Proceedings of the <em>XXV Escola Regional de Alto Desempenho da Região Sul</em>
+                    (Regional High-Performance Computing School – Southern Brazil), Foz do Iguaçu-PR, Brazil, Apr 2025.
+                    <a href="https://cradrs.github.io/eradrs2025/pdfs/resumos/S3R4.pdf" target="_blank"
+                        rel="noreferrer">[PDF]</a>
+                </li>
+
+                <!-- Add more items as needed -->
+            </ul>
+        </section>
+
+        <!-- ===== Technologies ===== -->
+        <section>
+            <h2>Technologies</h2>
+            <ul class="tech-grid">
+                <li><strong>Back-end:</strong> Java (5y), Spring (5y), Node.js (2y), Nest.js (1y), Python (1y)</li>
+                <li><strong>Front-end:</strong> React (3y), Angular (3y), Next.js (2y), JavaScript (3y), TypeScript (3y)
+                </li>
+                <li><strong>Cloud:</strong> Google Cloud Platform, AWS</li>
+            </ul>
+        </section>
+    </div>
 </body>
 
 </html>
